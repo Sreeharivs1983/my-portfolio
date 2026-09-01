@@ -67,11 +67,11 @@ export default function Footer() {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="mx-auto max-w-4xl px-6 py-10"
+        className="mx-auto max-w-4xl px-4 sm:px-6 py-8 sm:py-10"
       >
         {/* Social Links */}
         <motion.div
-          className="flex justify-center gap-6 mb-8"
+          className="flex justify-center gap-4 sm:gap-6 mb-6 sm:mb-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.1 }}

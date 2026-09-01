@@ -59,7 +59,7 @@ const ALSO_BUILT = [
 
 export default function Projects() {
   return (
-    <section id="work" className="mx-auto max-w-4xl px-6 py-16">
+    <section id="work" className="mx-auto max-w-4xl px-4 sm:px-6 py-12 sm:py-16">
       <Reveal>
         <SectionHeading command="ls projects/" />
       </Reveal>

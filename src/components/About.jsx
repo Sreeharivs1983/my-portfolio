@@ -3,7 +3,7 @@ import Reveal from './Reveal.jsx'
 
 export default function About() {
   return (
-    <section id="about" className="mx-auto max-w-4xl px-6 py-16">
+    <section id="about" className="mx-auto max-w-4xl px-4 sm:px-6 py-12 sm:py-16">
       <Reveal>
         <SectionHeading command="cat about.md" />
       </Reveal>

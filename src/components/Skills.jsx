@@ -61,7 +61,7 @@ const itemVariants = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-4xl px-6 py-16">
+    <section id="skills" className="mx-auto max-w-4xl px-4 sm:px-6 py-12 sm:py-16">
       <Reveal>
         <SectionHeading command="cat skills.json" />
       </Reveal>

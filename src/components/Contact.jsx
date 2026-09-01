@@ -10,7 +10,7 @@ const LINKS = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-4xl px-6 py-16">
+    <section id="contact" className="mx-auto max-w-4xl px-4 sm:px-6 py-12 sm:py-16">
       <Reveal>
         <SectionHeading command="./contact.sh" />
       </Reveal>

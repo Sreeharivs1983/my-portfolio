@@ -48,7 +48,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative mx-auto max-w-4xl overflow-hidden px-6 pb-20 pt-16 md:pt-24"
+      className="relative mx-auto max-w-4xl overflow-hidden px-4 sm:px-6 pb-12 sm:pb-20 pt-12 sm:pt-16 md:pt-24"
     >
       {/* Enhanced ambient floating gradient orbs */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
@@ -81,7 +81,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="font-mono text-sm text-teal font-semibold tracking-wide"
+        className="font-mono text-xs sm:text-sm text-teal font-semibold tracking-wide"
       >
         $ whoami
       </motion.p>
@@ -131,7 +131,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.6 }}
-        className="mt-8 flex flex-wrap gap-4"
+        className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
       >
         <motion.a
           whileHover={{
@@ -140,7 +140,7 @@ export default function Hero() {
           }}
           whileTap={{ scale: 0.95 }}
           href="#work"
-          className="rounded-lg bg-gradient-to-r from-amber to-orange-500 px-6 py-3 font-mono text-sm font-semibold text-bg shadow-lg transition-all hover:shadow-glow-lg"
+          className="flex-1 sm:flex-none rounded-lg bg-gradient-to-r from-amber to-orange-500 px-5 sm:px-6 py-2.5 sm:py-3 font-mono text-xs sm:text-sm font-semibold text-bg shadow-lg transition-all hover:shadow-glow-lg text-center"
         >
           View projects
         </motion.a>
@@ -153,7 +153,7 @@ export default function Hero() {
           }}
           whileTap={{ scale: 0.95 }}
           href="#contact"
-          className="rounded-lg border border-line px-6 py-3 font-mono text-sm font-semibold text-ink transition-all"
+          className="flex-1 sm:flex-none rounded-lg border border-line px-5 sm:px-6 py-2.5 sm:py-3 font-mono text-xs sm:text-sm font-semibold text-ink transition-all text-center"
         >
           Get in touch
         </motion.a>
