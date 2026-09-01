@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 const CODE_LINES = [
   'const developer = {',
   '  name: "Sreehari V S",',
-  '  role: "Full-Stack Developer",',
+  '  roles: ["Full-Stack Developer", "Generative AI Developer", "AI/ML Developer"],',
   '  based_in: "Kerala, India",',
   '  builds_with: ["React", "Node.js", "Python", "LLMs"],',
   '  status: "open to trainee & entry-level roles",',

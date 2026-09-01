@@ -24,7 +24,7 @@ export default function Contact() {
         >
           Looking for a trainee or entry-level full-stack role where I can
           keep building products end to end. Open to opportunities across
-          Kerala's IT parks and remote-friendly teams — reach out any time.
+          India's IT parks and remote-friendly teams — reach out any time.
         </motion.p>
       </Reveal>
 
