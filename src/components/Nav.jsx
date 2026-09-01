@@ -13,15 +13,20 @@ export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const handleNavClick = (href) => {
+  const handleNavClick = (e, href) => {
     const targetId = href.replace('#', '')
     const target = document.getElementById(targetId)
 
+    if (e) e.preventDefault()
     setActive(href)
     setMobileMenuOpen(false)
 
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      const offset = 80
+      const top = target.getBoundingClientRect().top + window.scrollY - offset
+      window.scrollTo({ top, behavior: 'smooth' })
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 
@@ -58,10 +63,7 @@ export default function Nav() {
       <nav className="relative mx-auto flex max-w-4xl items-center justify-between px-3 sm:px-6 py-3 sm:py-4 gap-4">
         <motion.a
           href="#top"
-          onClick={(e) => {
-            e.preventDefault()
-            handleNavClick('#top')
-          }}
+          onClick={(e) => handleNavClick(e, '#top')}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
@@ -114,10 +116,7 @@ export default function Nav() {
                 >
                   <motion.a
                     href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      handleNavClick(link.href)
-                    }}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className={`block py-3 px-4 rounded transition-all duration-300 ${
                       active === link.href ? 'text-amber font-semibold bg-surface/40' : 'text-ink hover:text-amber hover:bg-surface/20'
                     }`}
@@ -148,10 +147,7 @@ export default function Nav() {
             >
               <motion.a
                 href={link.href}
-                onClick={(e) => {
-                  e.preventDefault()
-                  handleNavClick(link.href)
-                }}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={`transition-all duration-300 ${
                   active === link.href ? 'text-ink font-semibold' : 'hover:text-ink'
                 }`}
