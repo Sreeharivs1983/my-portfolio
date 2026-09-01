@@ -67,7 +67,7 @@ export default function Skills() {
       </Reveal>
 
       <motion.div
-        className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
         initial="hidden"
         whileInView="visible"
         variants={containerVariants}
@@ -78,18 +78,18 @@ export default function Skills() {
             <motion.div
               variants={itemVariants}
               whileHover={{ y: -4 }}
-              className="rounded-lg border border-line/40 bg-gradient-to-br from-surface/60 to-surface2/40 p-5 backdrop-blur-sm transition-all hover:border-amber/50 hover:shadow-lg"
+              className="rounded-lg border border-line/40 bg-gradient-to-br from-surface/60 to-surface2/40 p-3 sm:p-5 backdrop-blur-sm transition-all hover:border-amber/50 hover:shadow-lg h-full flex flex-col"
             >
               <motion.h3
-                className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-teal font-semibold"
+                className="flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-widest text-teal font-semibold"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
               >
-                <span>{group.icon}</span>
+                <span className="text-lg sm:text-xl">{group.icon}</span>
                 {group.label}
               </motion.h3>
               <motion.ul
-                className="mt-4 flex flex-wrap gap-3"
+                className="mt-3 sm:mt-4 flex flex-wrap gap-2 sm:gap-3"
                 variants={{
                   hidden: { opacity: 0 },
                   visible: {
@@ -113,7 +113,7 @@ export default function Skills() {
                       boxShadow: '0 0 12px rgba(255, 180, 84, 0.3)',
                     }}
                     whileTap={{ scale: 0.95 }}
-                    className="rounded-md border border-line/60 px-3 py-1.5 font-mono text-xs text-ink bg-bg/40 hover:text-amber transition-all cursor-default"
+                    className="rounded-md border border-line/60 px-2 sm:px-3 py-1 sm:py-1.5 font-mono text-[11px] sm:text-xs text-ink bg-bg/40 hover:text-amber transition-all cursor-default whitespace-nowrap"
                   >
                     {item}
                   </motion.li>
