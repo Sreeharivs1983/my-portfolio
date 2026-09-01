@@ -1,0 +1,255 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0B0E14;
+    color: #E7E9EE;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.045) 1px, transparent 0);
+    background-size: 28px 28px;
+  }
+
+  ::selection {
+    background-color: #FFB454;
+    color: #0B0E14;
+  }
+
+  a {
+    text-underline-offset: 3px;
+  }
+
+  :focus-visible {
+    outline: 2px solid #FFB454;
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  /* Caret blink animation */
+  .caret {
+    display: inline-block;
+    width: 0.55ch;
+    background: #FFB454;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Floating orbs with enhanced motion */
+  .orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(64px);
+    opacity: 0.28;
+    animation: float 12s ease-in-out infinite;
+  }
+
+  .orb-amber {
+    background: #FFB454;
+    animation-delay: 0s;
+  }
+
+  .orb-teal {
+    background: #5EEAD4;
+    animation-delay: -6s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(24px, -20px) scale(1.08); }
+  }
+
+  /* Pulse glow animation */
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 0 0 rgba(255, 180, 84, 0.7);
+    }
+    50% { 
+      box-shadow: 0 0 0 20px rgba(255, 180, 84, 0);
+    }
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+
+  /* Shimmer animation */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  /* Glow line animation */
+  @keyframes glow-line {
+    0% {
+      box-shadow: 0 0 8px rgba(94, 234, 212, 0), inset 0 0 8px rgba(94, 234, 212, 0);
+    }
+    50% {
+      box-shadow: 0 0 16px rgba(94, 234, 212, 0.4), inset 0 0 8px rgba(94, 234, 212, 0.2);
+    }
+    100% {
+      box-shadow: 0 0 8px rgba(94, 234, 212, 0), inset 0 0 8px rgba(94, 234, 212, 0);
+    }
+  }
+
+  .glow-line:hover {
+    animation: glow-line 1.5s ease-in-out;
+  }
+
+  /* Slide in from left */
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .slide-in-left {
+    animation: slide-in-left 0.6s ease-out;
+  }
+
+  /* Slide in from right */
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .slide-in-right {
+    animation: slide-in-right 0.6s ease-out;
+  }
+
+  /* Bounce in */
+  @keyframes bounce-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+    }
+    60% {
+      opacity: 1;
+      transform: scale(1.02);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .bounce-in {
+    animation: bounce-in 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  }
+
+  /* Float animation */
+  @keyframes float-gentle {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  .float-gentle {
+    animation: float-gentle 3s ease-in-out infinite;
+  }
+
+  /* Rotate */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+
+  /* Gradient animation */
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  /* Scale pulse */
+  @keyframes scale-pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  .scale-pulse {
+    animation: scale-pulse 2s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .caret,
+    .orb,
+    .pulse-glow,
+    .shimmer,
+    .glow-line,
+    .slide-in-left,
+    .slide-in-right,
+    .bounce-in,
+    .float-gentle,
+    .spin-slow,
+    .gradient-shift,
+    .scale-pulse {
+      animation: none;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
