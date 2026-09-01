@@ -13,21 +13,9 @@ export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const handleNavClick = (e, href) => {
-    const targetId = href.replace('#', '')
-    const target = document.getElementById(targetId)
-
-    if (e) e.preventDefault()
+  const handleNavClick = (href) => {
     setActive(href)
     setMobileMenuOpen(false)
-
-    if (target) {
-      const offset = 80
-      const top = target.getBoundingClientRect().top + window.scrollY - offset
-      window.scrollTo({ top, behavior: 'smooth' })
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
   }
 
   useEffect(() => {
@@ -54,58 +42,66 @@ export default function Nav() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-[100] overflow-visible transition-all duration-300 ${
         isScrolled
           ? 'border-b border-line/50 bg-bg/60 backdrop-blur-md shadow-lg'
           : 'border-b border-line/20 bg-bg/40 backdrop-blur'
       }`}
     >
-      <nav className="relative mx-auto flex max-w-4xl items-center justify-between px-3 sm:px-6 py-3 sm:py-4 gap-4">
+      <nav className="relative z-[101] mx-auto flex max-w-4xl items-center justify-between px-3 sm:px-6 py-3 sm:py-4 gap-4 overflow-visible">
         <motion.a
           href="#top"
           onClick={(e) => handleNavClick(e, '#top')}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="font-mono text-[10px] sm:text-xs md:text-sm font-semibold text-ink transition-all hover:text-amber hover:scale-110 whitespace-nowrap"
+          className="font-mono text-sm sm:text-base md:text-lg font-semibold text-ink transition-all hover:text-amber hover:scale-110 whitespace-nowrap"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           sreehari<span className="text-amber">.</span>dev
         </motion.a>
 
-        <div className="md:hidden ml-auto flex flex-col items-end gap-2">
+        <div className="md:hidden relative ml-auto">
           <motion.button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex flex-col gap-1.5 z-50 p-2"
+            className="z-[120] flex h-10 w-10 items-center justify-center rounded-full p-2"
             whileTap={{ scale: 0.9 }}
             aria-label="Toggle menu"
           >
-            <motion.div
-              animate={mobileMenuOpen ? { rotate: 45, y: 10 } : { rotate: 0, y: 0 }}
-              className="w-7 h-1 bg-amber rounded-full"
-            />
-            <motion.div
-              animate={mobileMenuOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1 }}
-              className="w-7 h-1 bg-ink rounded-full"
-            />
-            <motion.div
-              animate={mobileMenuOpen ? { rotate: -45, y: -10 } : { rotate: 0, y: 0 }}
-              className="w-7 h-1 bg-amber rounded-full"
-            />
+            {mobileMenuOpen ? (
+              <span className="text-3xl leading-none text-amber">×</span>
+            ) : (
+              <div className="flex flex-col gap-1.5">
+                <span className="block h-1 w-7 rounded-full bg-amber" />
+                <span className="block h-1 w-7 rounded-full bg-ink" />
+                <span className="block h-1 w-7 rounded-full bg-amber" />
+              </div>
+            )}
           </motion.button>
 
           <motion.div
             initial={false}
             animate={
               mobileMenuOpen
-                ? { opacity: 1, height: 'auto', x: 0 }
-                : { opacity: 0, height: 0, x: 32, pointerEvents: 'none' }
+                ? { opacity: 1, x: 0, y: 0, pointerEvents: 'auto' }
+                : { opacity: 0, x: 18, y: -8, pointerEvents: 'none' }
             }
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="bg-bg/98 backdrop-blur-md border border-line/50 rounded-b-xl shadow-lg overflow-hidden w-[220px]"
+            className="fixed inset-x-4 top-[92px] z-[130] overflow-hidden rounded-2xl border border-line/50 bg-bg/95 shadow-2xl backdrop-blur-md pointer-events-auto"
           >
-            <motion.ul className="flex flex-col gap-1 font-mono text-sm text-muted px-3 py-3">
+            <div className="flex justify-end p-3">
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-surface/40 text-2xl text-amber hover:bg-surface/60"
+                aria-label="Close menu"
+              >
+                ×
+              </button>
+            </div>
+
+            <motion.ul className="flex flex-col gap-2 px-4 pb-5 pt-1 font-mono text-2xl text-muted">
               {LINKS.map((link, i) => (
                 <motion.li
                   key={link.href}
@@ -116,11 +112,11 @@ export default function Nav() {
                 >
                   <motion.a
                     href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
-                    className={`block py-3 px-4 rounded transition-all duration-300 ${
-                      active === link.href ? 'text-amber font-semibold bg-surface/40' : 'text-ink hover:text-amber hover:bg-surface/20'
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`block py-3 px-2 rounded-xl transition-all duration-300 ${
+                      active === link.href ? 'text-amber font-semibold' : 'text-ink hover:text-amber'
                     }`}
-                    whileHover={{ x: 8 }}
+                    whileHover={{ x: 6 }}
                   >
                     {link.label}
                   </motion.a>
@@ -147,7 +143,7 @@ export default function Nav() {
             >
               <motion.a
                 href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
+                onClick={() => handleNavClick(link.href)}
                 className={`transition-all duration-300 ${
                   active === link.href ? 'text-ink font-semibold' : 'hover:text-ink'
                 }`}
